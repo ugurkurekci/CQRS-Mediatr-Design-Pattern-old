@@ -13,7 +13,7 @@ public class UsersModel
 
     public string LastName { get; set; }
 
-    public string UserName { get; set; }
+    public string Email { get; set; }
 
     public string Password { get; set; }
 
@@ -22,4 +22,6 @@ public class UsersModel
     public DateTime CreateDate { get; set; }
 
     public DepartmentsModel DepartmentsModel { get; set; }
+
+    public ICollection<RefreshTokens> RefreshTokens { get; set; }
 }

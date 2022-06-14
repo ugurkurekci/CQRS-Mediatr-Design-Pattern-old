@@ -8,6 +8,7 @@ public class DynamicWebPanelDbContext : DbContext
 {
 
     public DbSet<UsersModel> Users { get; set; }
+    public DbSet<RefreshTokens> RefreshTokens { get; set; }
 
     public DbSet<DepartmentsModel> Departments { get; set; }
 

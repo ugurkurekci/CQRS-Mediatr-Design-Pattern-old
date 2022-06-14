@@ -12,4 +12,8 @@ public interface IUserRepository
 
     public Task<IReadOnlyList<T>> GetAsync<T>(int DepartmentsID);
 
+    public Task<UsersModel> GetByEmailAsync(string Email);
+
+    public Task<UsersModel> GetCheckEmailPassword(string email, string password);
+
 }

@@ -40,4 +40,20 @@ public class UsersRepository : IUserRepository
     {
         return await _dynamicWebPanelDbContext.Users.Where(i => i.DepartmentsID == DepartmentsID).ProjectTo<T>(_mapper.ConfigurationProvider).ToListAsync();
     }
+
+    public async Task<UsersModel> GetCheckEmailPassword(string email, string password)
+    {
+        var find = _dynamicWebPanelDbContext.Users.SingleOrDefaultAsync(i => i.Email == email && i.Password == password);
+        return await find;
+
+    }
+
+    public async Task<UsersModel> GetByEmailAsync(string Email)
+    {
+        var find = _dynamicWebPanelDbContext.Users.FirstOrDefaultAsync(i => i.Email == Email);
+        return await find;
+       
+    }
+
+
 }

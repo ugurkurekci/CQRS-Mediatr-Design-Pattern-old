@@ -19,8 +19,8 @@ public class UsersCommandCreateHandler : IRequestHandler<UsersCommandCreate, int
 
     public async Task<int> Handle(UsersCommandCreate request, CancellationToken cancellationToken)
     {
-        UsersModel departmentsModel = _mapper.Map<UsersModel>(request._usersCreateDto);
-        await _userRepository.AddAsync(departmentsModel);
-        return await Task.FromResult(departmentsModel.ID);
+        UsersModel usersModel = _mapper.Map<UsersModel>(request._usersCreateDto);
+        await _userRepository.AddAsync(usersModel);
+        return await Task.FromResult(usersModel.ID);
     }
 }
