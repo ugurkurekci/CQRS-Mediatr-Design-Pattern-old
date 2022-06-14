@@ -30,6 +30,7 @@ public class AuthenticateService : IAuthenticateService
         await _refreshTokenRepository.AddAsync(new RefreshTokens()
         {
             UserID = authenticateModel.UserID,
+            AccessToken = accessToken,
             RefreshToken = refreshToken,
             Device = authenticateModel.Device,
             IpAdress = authenticateModel.IpAdress,

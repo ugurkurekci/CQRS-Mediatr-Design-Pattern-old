@@ -11,7 +11,7 @@ public class RefreshTokens
 
     [ForeignKey("UsersModel")]
     public int UserID { get; set; }
-
+    public string AccessToken { get; set; }
     public string RefreshToken { get; set; }
 
     public string Device { get; set; }

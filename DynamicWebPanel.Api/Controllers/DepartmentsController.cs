@@ -3,6 +3,7 @@ using DynamicWebPanel.Business.DTOs.Departments;
 using DynamicWebPanel.Business.Queries.Departments;
 using DynamicWebPanel.Business.Utilities.Constans;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DynamicWebPanel.Api.Controllers
@@ -17,6 +18,7 @@ namespace DynamicWebPanel.Api.Controllers
             _mediator = mediator;
         }
 
+        [Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
