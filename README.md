@@ -1,7 +1,4 @@
-<h3> Hazırlanan içerik</h3>
-<p>CQRS Pattern - MediatR - Clean Code - Layered Architecture - EfCore - JWT Access / Refresh Token </p>
-
-<h3>Planlanması düşünülen özellik teknoloji</h3>
+<h3 style="color:red">Planlanması düşünülen özellik teknoloji</h3>
 
 <p>Loglama sistemi Graylog veya Log tablosu karar vermedim.</p>
 <p>Kuyruklama sistemi RabbitMQ</p>
