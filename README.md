@@ -16,4 +16,4 @@
 <h3> Hazırlanan içerik</h3>
 <p>CQRS Pattern - MediatR - Clean Code - Layered Architecture - EfCore - JWT Access / Refresh Token </p>
 
-Aklına geldikçe yaz.
+Aklına geldikçe yaz..
