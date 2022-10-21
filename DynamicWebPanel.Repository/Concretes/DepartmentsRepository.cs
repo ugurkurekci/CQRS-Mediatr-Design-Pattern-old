@@ -18,21 +18,32 @@ public class DepartmentsRepository : IDepartmentsRepository
         _mapper = mapper;
     }
 
+    public async Task<IReadOnlyList<T>> GetAllAsync<T>()
+    {
+        return await _dynamicWebPanelDbContext.Departments.ProjectTo<T>(_mapper.ConfigurationProvider).ToListAsync();
+    }
+
     public async Task AddAsync(DepartmentsModel departmentsModel)
     {
         _dynamicWebPanelDbContext.Departments.Add(departmentsModel);
         await _dynamicWebPanelDbContext.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task<int> UpdateAsync(DepartmentsModel departmentsModel)
     {
-        var entity = _dynamicWebPanelDbContext.Departments.Single(x => x.ID == id);
-        _dynamicWebPanelDbContext.Departments.Remove(entity);
-        await _dynamicWebPanelDbContext.SaveChangesAsync();
+        _dynamicWebPanelDbContext.Departments.Update(departmentsModel);
+        return await _dynamicWebPanelDbContext.SaveChangesAsync();
     }
 
-    public async Task<IReadOnlyList<T>> GetAllAsync<T>()
+    public async Task<int> DeleteAsync(int id)
     {
-        return await _dynamicWebPanelDbContext.Departments.ProjectTo<T>(_mapper.ConfigurationProvider).ToListAsync();
+        var entity = _dynamicWebPanelDbContext.Departments.Single(x => x.ID == id);
+        if (entity == null)
+        {
+            return -1;
+        }
+        _dynamicWebPanelDbContext.Departments.Remove(entity);
+        return await _dynamicWebPanelDbContext.SaveChangesAsync();
     }
+
 }

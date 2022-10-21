@@ -9,6 +9,8 @@ public class DepartmentsProfile : Profile
 {
     public DepartmentsProfile()
     {
+        CreateMap<DepartmentsUpdateDto, DepartmentsModel>();
+
         CreateMap<DepartmentsCreateDto, DepartmentsModel>()
             .ForMember(destination => destination.DepartmentsName,
                  source => source.MapFrom(_ => _.DepartmentsName))
@@ -16,8 +18,6 @@ public class DepartmentsProfile : Profile
                  source => source.MapFrom(i => DateTime.Now));
 
         CreateMap<DepartmentsModel, DepartmentsListDto>()
-             .ForMember(destination => destination.ID, source => source.MapFrom(s => s.ID))
-             .ForMember(destination => destination.DepartmentsName, source => source.MapFrom(s => s.DepartmentsName))
              .ForMember(destination => destination.CreateDate, source => source.MapFrom(s => s.CreateDate.ToString(DateFormatConstans.BASICDATEFORMAT)));
 
 

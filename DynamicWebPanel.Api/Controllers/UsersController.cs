@@ -18,25 +18,37 @@ namespace DynamicWebPanel.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _mediator.Send(new UsersGetAllQuery()));
         }
-        [HttpGet("Get/{departmentsID}")]
+
+        [HttpGet("{departmentsid}")]
         public async Task<IActionResult> GetByDepartments(int departmentsID)
         {
             return Ok(await _mediator.Send(new UsersGetByDepartmentsQuery(departmentsID)));
         }
 
-        [HttpPost("Post")]
+        [HttpPost]
+        [ProducesResponseType(201)]
         public async Task<IActionResult> Post([FromBody] UsersCreateDto usersCreateDto)
         {
             int id = await _mediator.Send(new UsersCommandCreate(usersCreateDto));
             return StatusCode(HttpStatusCodes.Created, id);
         }
 
-        [HttpDelete("Delete/{id}")]
+        [ProducesResponseType(204)]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put([FromBody] UsersUpdateDto usersUpdateDto, int ID)
+        {
+            int id = await _mediator.Send(new UsersCommandUpdate(ID, usersUpdateDto));
+            return NoContent();
+
+        }
+
+        [ProducesResponseType(204)]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new UsersCommandDelete(id));

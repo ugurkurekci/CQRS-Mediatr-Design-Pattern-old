@@ -4,10 +4,12 @@ namespace DynamicWebPanel.Repository.Abstractions;
 public interface IDepartmentsRepository
 {
 
-    public Task AddAsync(DepartmentsModel departmentsModel);
-
     public Task<IReadOnlyList<T>> GetAllAsync<T>();
 
-    public Task DeleteAsync(int id);
+    public Task AddAsync(DepartmentsModel departmentsModel);
+
+    public Task<int> UpdateAsync(DepartmentsModel departmentsModel);
+
+    public Task<int> DeleteAsync(int id);
 
 }

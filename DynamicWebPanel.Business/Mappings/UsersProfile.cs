@@ -9,6 +9,8 @@ public class UsersProfile : Profile
 {
     public UsersProfile()
     {
+        CreateMap<UsersUpdateDto, UsersModel>();
+
         CreateMap<UsersCreateDto, UsersModel>()
             .ForMember(destination => destination.CreateDate,
                  source => source.MapFrom(i => DateTime.Now));
