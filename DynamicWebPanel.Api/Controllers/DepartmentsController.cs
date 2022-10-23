@@ -18,7 +18,6 @@ namespace DynamicWebPanel.Api.Controllers
             _mediator = mediator;
         }
 
-        [Authorize]
         [HttpGet]
         [ProducesResponseType(200)]
 
@@ -37,9 +36,9 @@ namespace DynamicWebPanel.Api.Controllers
 
         [ProducesResponseType(204)]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] DepartmentsUpdateDto departmentsUpdateDto, int ID)
+        public async Task<IActionResult> Put([FromBody] DepartmentsUpdateDto departmentsUpdateDto, int id)
         {
-            int id = await _mediator.Send(new DepartmentsCommandUpdate(departmentsUpdateDto, ID));
+            int ID = await _mediator.Send(new DepartmentsCommandUpdate(departmentsUpdateDto, id));
             return NoContent();
 
         }
