@@ -46,4 +46,8 @@ public class DepartmentsRepository : IDepartmentsRepository
         return await _dynamicWebPanelDbContext.SaveChangesAsync();
     }
 
+    public async Task<DepartmentsModel> GetByID<T>(int ID)
+    {
+        return await _dynamicWebPanelDbContext.Departments.FirstOrDefaultAsync(x => x.ID == ID);
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DynamicWebPanel.Business.Commands.Users;
+using DynamicWebPanel.Entity;
 using DynamicWebPanel.Repository.Abstractions;
 using MediatR;
 
@@ -16,11 +17,13 @@ public class UsersCommandUpdateHandler : IRequestHandler<UsersCommandUpdate, int
         _userRepository = userRepository;
     }
 
-    public Task<int> Handle(UsersCommandUpdate request, CancellationToken cancellationToken)
+    public async Task<int> Handle(UsersCommandUpdate request, CancellationToken cancellationToken)
     {
-        //check user id
-        //exist map
-        //return request.ID
-        throw new NotImplementedException();
+
+        int userID = request.ID;
+        UsersModel exist = await _userRepository.GetAsyncByID<UsersModel>(request.ID);
+        UsersModel usersModel = _mapper.Map(request.UsersUpdateDto, exist);
+        int result = await _userRepository.UpdateAsync(usersModel);
+        return result;
     }
 }

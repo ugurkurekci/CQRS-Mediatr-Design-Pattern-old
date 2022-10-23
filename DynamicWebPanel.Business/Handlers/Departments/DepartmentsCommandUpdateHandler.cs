@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DynamicWebPanel.Business.Commands.Departments;
+using DynamicWebPanel.Entity;
 using DynamicWebPanel.Repository.Abstractions;
 using MediatR;
 
@@ -16,11 +17,12 @@ public class DepartmentsCommandUpdateHandler : IRequestHandler<DepartmentsComman
         _departmentsRepository = departmentsRepository;
     }
 
-    public Task<int> Handle(DepartmentsCommandUpdate request, CancellationToken cancellationToken)
+    public async Task<int> Handle(DepartmentsCommandUpdate request, CancellationToken cancellationToken)
     {
-        //check user id
-        //exist map
-        //return request.ID
-        throw new NotImplementedException();
+        int userID = request.ID;
+        DepartmentsModel exist = await _departmentsRepository.GetByID<DepartmentsModel>(request.ID);
+        DepartmentsModel departmentsModel = _mapper.Map(request.DepartmentsUpdateDto, exist);
+        int result = await _departmentsRepository.UpdateAsync(departmentsModel);
+        return result;
     }
 }

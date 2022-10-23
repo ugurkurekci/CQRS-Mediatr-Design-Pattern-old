@@ -8,6 +8,8 @@ public interface IUserRepository
 
     public Task<IReadOnlyList<T>> GetAsync<T>(int DepartmentsID);
 
+    public Task<UsersModel> GetAsyncByID<T>(int ID);
+
     public Task AddAsync(UsersModel usersModel);
 
     public Task<int> UpdateAsync(UsersModel usersModel);

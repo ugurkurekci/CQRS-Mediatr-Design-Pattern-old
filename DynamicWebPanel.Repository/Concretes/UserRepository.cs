@@ -66,4 +66,10 @@ public class UsersRepository : IUserRepository
         return await _dynamicWebPanelDbContext.SaveChangesAsync();
     }
 
+    public async Task<UsersModel> GetAsyncByID<T>(int ID)
+    {
+        var find = _dynamicWebPanelDbContext.Users.FirstOrDefaultAsync(x => x.ID == ID);
+        return await find;
+
+    }
 }
