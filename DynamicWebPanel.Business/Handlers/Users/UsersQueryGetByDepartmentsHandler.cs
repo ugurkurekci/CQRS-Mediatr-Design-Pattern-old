@@ -7,6 +7,7 @@ namespace DynamicWebPanel.Business.Handlers.Users;
 
 public class UsersQueryGetByDepartmentsHandler : IRequestHandler<UsersGetByDepartmentsQuery, IReadOnlyList<UsersListDto>>
 {
+
     private readonly IUserRepository _userRepository;
 
     public UsersQueryGetByDepartmentsHandler(IUserRepository userRepository)
@@ -19,4 +20,5 @@ public class UsersQueryGetByDepartmentsHandler : IRequestHandler<UsersGetByDepar
         return await _userRepository.GetAsync<UsersListDto>(request.DepartmentsID);
 
     }
+
 }

@@ -6,6 +6,7 @@ namespace DynamicWebPanel.Business.Handlers.Departments;
 
 public class UsersCommandDeleteHandler : IRequestHandler<DepartmentsCommandDelete, int>
 {
+
     private readonly IDepartmentsRepository _departmentsRepository;
 
     public UsersCommandDeleteHandler(IDepartmentsRepository departmentsRepository)
@@ -18,4 +19,5 @@ public class UsersCommandDeleteHandler : IRequestHandler<DepartmentsCommandDelet
         await _departmentsRepository.DeleteAsync(request.ID);
         return request.ID;
     }
+
 }

@@ -7,6 +7,7 @@ namespace DynamicWebPanel.Business.Handlers.Users;
 
 public class UsersQueryGetAllHandler : IRequestHandler<UsersGetAllQuery, IReadOnlyList<UsersListDto>>
 {
+
     private readonly IUserRepository _userRepository;
 
     public UsersQueryGetAllHandler(IUserRepository userRepository)
@@ -18,4 +19,5 @@ public class UsersQueryGetAllHandler : IRequestHandler<UsersGetAllQuery, IReadOn
     {
         return await _userRepository.GetAllAsync<UsersListDto>();
     }
+
 }

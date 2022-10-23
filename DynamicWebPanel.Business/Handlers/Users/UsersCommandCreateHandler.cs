@@ -8,6 +8,7 @@ namespace DynamicWebPanel.Business.Handlers.Users;
 
 public class UsersCommandCreateHandler : IRequestHandler<UsersCommandCreate, int>
 {
+
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
 
@@ -23,4 +24,5 @@ public class UsersCommandCreateHandler : IRequestHandler<UsersCommandCreate, int
         await _userRepository.AddAsync(usersModel);
         return await Task.FromResult(usersModel.ID);
     }
+
 }

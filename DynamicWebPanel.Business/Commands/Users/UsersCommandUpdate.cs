@@ -12,6 +12,7 @@ public class UsersCommandUpdate : IRequest<int>
 {
 
     public int ID { get; set; }
+
     public UsersUpdateDto UsersUpdateDto { get; set; }
 
     public UsersCommandUpdate(int id, UsersUpdateDto usersUpdateDto)
@@ -20,5 +21,4 @@ public class UsersCommandUpdate : IRequest<int>
         UsersUpdateDto = usersUpdateDto;
     }
 
-   
 }

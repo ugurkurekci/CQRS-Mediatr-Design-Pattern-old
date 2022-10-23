@@ -23,6 +23,11 @@ public class DepartmentsRepository : IDepartmentsRepository
         return await _dynamicWebPanelDbContext.Departments.ProjectTo<T>(_mapper.ConfigurationProvider).ToListAsync();
     }
 
+    public async Task<DepartmentsModel> GetByID<T>(int ID)
+    {
+        return await _dynamicWebPanelDbContext.Departments.FirstOrDefaultAsync(x => x.ID == ID);
+    }
+
     public async Task AddAsync(DepartmentsModel departmentsModel)
     {
         _dynamicWebPanelDbContext.Departments.Add(departmentsModel);
@@ -46,8 +51,4 @@ public class DepartmentsRepository : IDepartmentsRepository
         return await _dynamicWebPanelDbContext.SaveChangesAsync();
     }
 
-    public async Task<DepartmentsModel> GetByID<T>(int ID)
-    {
-        return await _dynamicWebPanelDbContext.Departments.FirstOrDefaultAsync(x => x.ID == ID);
-    }
 }

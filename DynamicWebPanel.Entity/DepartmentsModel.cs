@@ -4,6 +4,7 @@ namespace DynamicWebPanel.Entity;
 
 public class DepartmentsModel
 {
+
     [Key]
     public int ID { get; set; }
 
@@ -12,4 +13,5 @@ public class DepartmentsModel
     public DateTime CreateDate { get; set; }
 
     public ICollection<UsersModel> UsersModel { get; set; }
+
 }

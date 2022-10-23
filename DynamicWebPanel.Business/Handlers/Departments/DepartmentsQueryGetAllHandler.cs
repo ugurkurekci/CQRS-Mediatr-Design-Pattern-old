@@ -7,6 +7,7 @@ namespace DynamicWebPanel.Business.Handlers.Departments;
 
 public class DepartmentsQueryGetAllHandler : IRequestHandler<DepartmentsGetAllQuery, IReadOnlyList<DepartmentsListDto>>
 {
+
     private readonly IDepartmentsRepository _departmentsRepository;
 
     public DepartmentsQueryGetAllHandler(IDepartmentsRepository departmentsRepository)
@@ -18,4 +19,5 @@ public class DepartmentsQueryGetAllHandler : IRequestHandler<DepartmentsGetAllQu
     {
         return await _departmentsRepository.GetAllAsync<DepartmentsListDto>();
     }
+
 }

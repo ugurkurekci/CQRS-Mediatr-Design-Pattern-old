@@ -6,6 +6,7 @@ namespace DynamicWebPanel.Business.Handlers.Users;
 
 public class UsersCommandDeleteHandler : IRequestHandler<UsersCommandDelete, int>
 {
+
     private readonly IUserRepository _userRepository;
 
     public UsersCommandDeleteHandler(IUserRepository userRepository)
@@ -18,4 +19,5 @@ public class UsersCommandDeleteHandler : IRequestHandler<UsersCommandDelete, int
         await _userRepository.DeleteAsync(request.ID);
         return request.ID;
     }
+
 }

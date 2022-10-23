@@ -4,6 +4,7 @@ namespace DynamicWebPanel.Entity;
 
 public class UsersModel
 {
+
     public int ID { get; set; }
 
     [ForeignKey("DepartmentsModel")]
@@ -23,5 +24,4 @@ public class UsersModel
 
     public DepartmentsModel DepartmentsModel { get; set; }
 
-    public ICollection<RefreshTokens> RefreshTokens { get; set; }
 }

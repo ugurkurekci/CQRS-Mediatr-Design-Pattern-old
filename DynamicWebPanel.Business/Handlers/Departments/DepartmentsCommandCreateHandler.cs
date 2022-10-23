@@ -8,6 +8,7 @@ namespace DynamicWebPanel.Business.Handlers.Departments;
 
 public class UsersCommandCreateHandler : IRequestHandler<DepartmentsCommandCreate, int>
 {
+
     private readonly IDepartmentsRepository _departmentsRepository;
     private readonly IMapper _mapper;
 
@@ -23,4 +24,5 @@ public class UsersCommandCreateHandler : IRequestHandler<DepartmentsCommandCreat
         await _departmentsRepository.AddAsync(departmentsModel);
         return await Task.FromResult(departmentsModel.ID);
     }
+
 }

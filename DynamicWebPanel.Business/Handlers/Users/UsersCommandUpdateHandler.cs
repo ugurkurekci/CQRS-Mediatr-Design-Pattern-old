@@ -8,6 +8,7 @@ namespace DynamicWebPanel.Business.Handlers.Users;
 
 public class UsersCommandUpdateHandler : IRequestHandler<UsersCommandUpdate, int>
 {
+
     private readonly IMapper _mapper;
     private readonly IUserRepository _userRepository;
 
@@ -19,11 +20,11 @@ public class UsersCommandUpdateHandler : IRequestHandler<UsersCommandUpdate, int
 
     public async Task<int> Handle(UsersCommandUpdate request, CancellationToken cancellationToken)
     {
-
         int userID = request.ID;
         UsersModel exist = await _userRepository.GetAsyncByID<UsersModel>(request.ID);
         UsersModel usersModel = _mapper.Map(request.UsersUpdateDto, exist);
         int result = await _userRepository.UpdateAsync(usersModel);
         return result;
     }
+
 }

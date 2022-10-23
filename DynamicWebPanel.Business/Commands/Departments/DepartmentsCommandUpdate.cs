@@ -10,7 +10,6 @@ public class DepartmentsCommandUpdate : IRequest<int>
 
     public DepartmentsUpdateDto DepartmentsUpdateDto { get; set; }
 
-
     public DepartmentsCommandUpdate(DepartmentsUpdateDto departmentsUpdateDto, int id)
     {
         DepartmentsUpdateDto = departmentsUpdateDto;
