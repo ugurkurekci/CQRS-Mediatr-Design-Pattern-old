@@ -8,11 +8,8 @@ public class DynamicWebPanelDbContext : DbContext
 {
 
     public DbSet<UsersModel> Users { get; set; }
-    public DbSet<RefreshTokens> RefreshTokens { get; set; }
 
     public DbSet<DepartmentsModel> Departments { get; set; }
-
-
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
@@ -22,5 +19,7 @@ public class DynamicWebPanelDbContext : DbContext
             IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             optionsBuilder.UseSqlServer(config.GetConnectionString("ProjectDbString"));
         }
+
     }
+
 }
